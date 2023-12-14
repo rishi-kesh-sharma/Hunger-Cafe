@@ -2,8 +2,8 @@ import React from "react";
 import LoadingImage from "../../images/loading.gif";
 const Loading = () => {
   return (
-    <div>
-      <img src={LoadingImage} />
+    <div className="h-screen w-screen">
+      <img src={LoadingImage} className="h-full w-full" />
     </div>
   );
 };

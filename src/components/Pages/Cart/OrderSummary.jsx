@@ -9,7 +9,8 @@ const OrderSummary = ({ handleOpen, open }) => {
   const totalPrice = useSelector(selectTotalPrice);
   const discount = totalPrice * 0.1;
   const deliveryCharges = totalPrice * 0.05;
-  const totalAmt = totalPrice + deliveryCharges - discount;
+  // const totalAmt = totalPrice + deliveryCharges - discount;
+  const totalAmt = totalPrice;
   console.log(open);
 
   return (

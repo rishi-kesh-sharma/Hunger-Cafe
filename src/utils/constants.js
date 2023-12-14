@@ -11,6 +11,7 @@ export const API_PATHS = {
   GET_TEAMS: "teams",
   GET_TESTIMONIALS: "testimonials",
   GET_PRODUCTS: "products",
+  GET_TEAM: "teams",
   GET_BLOG_DETAIL: (slug) => `blogs/${slug}`,
   GET_RELATED_BLOGS: (categoryId) => `blogs?category=${categoryId}`,
   ORDER: `orders`,

@@ -8,7 +8,7 @@ import Slider from "./Slider";
 import Section from "../../../commons/Section";
 import Container from "../../../commons/Container";
 
-const Testimonials = () => {
+const Testimonials = ({ testimonials }) => {
   return (
     <Section className="flex flex-col gap-[2rem] md:mt-[4rem] ">
       <SectionTitle className="md:mb-0">Our Testimonials</SectionTitle>
@@ -27,7 +27,7 @@ const Testimonials = () => {
           are proud to have received numerous glowing testimonials from our
           satisfied clients.
         </SectionDescription> */}
-      <Slider />
+      <Slider testimonials={testimonials} />
       {/* TESTIMONIALS SLIDER */}
     </Section>
   );
