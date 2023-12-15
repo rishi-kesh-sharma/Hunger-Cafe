@@ -5,11 +5,11 @@ import CustomSlider, {
   SampleNextArrow,
   SamplePrevArrow,
 } from "../../../commons/CustomSlider";
-import { testimonials } from "../../../../data";
+// import { testimonials } from "../../../../data";
 import Section from "../../../commons/Section";
 import Container from "../../../commons/Container";
 
-const TestimonialsSlider = () => {
+const TestimonialsSlider = ({ testimonials }) => {
   var settings = {
     dots: true,
     infinite: false,

@@ -32,8 +32,10 @@ const App = () => {
         </>
       ) : (
         <div className="flex flex-col justify-center items-center min-h-screen">
-          <h1 className="text-4xl font-bold">Oops! Connection lost</h1>
-          <p>
+          <h1 className="text-4xl font-bold text-center">
+            Oops! Connection lost
+          </h1>
+          <p className="text-center">
             Looks like you're offline, please check your internet connection.
           </p>
         </div>

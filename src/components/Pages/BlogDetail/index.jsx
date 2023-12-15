@@ -11,10 +11,11 @@ import { API_PATHS } from "../../../utils/constants.js";
 import useFetch from "../../../hooks/useFetch.js";
 import CardImage from "../../commons/CardImage.jsx";
 import CardContent from "../../commons/CardContent.jsx";
+import cheerio from "cheerio";
+import Loading from "../../commons/Loading.jsx";
 
 const BlogDetail = () => {
   const { slug } = useParams();
-  const [parsedDescription, setParsedDescription] = useState("");
   const {
     data: blog,
     loading: loading1,
@@ -25,19 +26,27 @@ const BlogDetail = () => {
     loading: loading2,
     error: error2,
   } = useFetch({ path: API_PATHS.GET_RELATED_BLOGS(blog?.category) });
-  // useEffect(() => {
-  //   const text = cheerio.load(blog.description).text();
-  //   setParsedDescription(text);
-  // }, [blog]);
+
+  const text = blog?.description && cheerio?.load(blog?.description).text();
+
+  const loading = loading1 || loading2;
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="mb-[3rem]">
       <main>
-        <Container className=" flex gap-3 lg:pt-16 lg:pb-24 relative mobile:flex-col ">
-          <div className="w-[70%] bg-white mobile:w-[100%]">
+        <Container className=" flex gap-3 lg:pt-16 lg:pb-24 relative flex-col lg:flex-row ">
+          <div className="lg:w-[70%] bg-white mobile:w-[100%]">
             <article className="p-5 w-full format format-sm sm:format-base lg:format-lg format-blue">
               <p className="inline-flex items-center mr-3 text-sm text-gray-900">
-                <time pubdate datetime="2022-02-08" title="February 8th, 2022">
+                <time
+                  className="text-gray-600 text-xs"
+                  pubdate
+                  datetime="2022-02-08"
+                  title="February 8th, 2022">
                   {moment(blog?.created_at || blog?.updated_at).fromNow()}
                 </time>
               </p>
@@ -47,7 +56,7 @@ const BlogDetail = () => {
               <CustomImage src={blog?.photo} />
 
               <section className="text-gray-500 text-sm my-6">
-                <p>{parsedDescription}</p>
+                <p>{text}</p>
               </section>
 
               <section className="flex flex-col gap-3">
@@ -120,8 +129,8 @@ const BlogSection = ({ blogs }) => {
         <h2 className="mb-8 text-2xl font-bold text-gray-900">
           Related articles
         </h2>
-        <div className="flex flex-col gap-5 ">
-          {blogs?.slice(0, 3)?.map((blog, index) => {
+        <div className=" grid grid-cols-1 md:grid-cols-3  lg:flex lg:flex-col gap-5  ">
+          {blogs?.data?.slice(0, 3)?.map((blog, index) => {
             return (
               <Link href={`/blog/${blog?.slug}`} key={index}>
                 <Card className="cursor-pointer bg-white shadow-lg rounded-lg gap-1 p-5 w-[100%]">
@@ -177,7 +186,9 @@ const BlogSection = ({ blogs }) => {
                       <span className="text-xs text-gray-300 dark:text-gray-600">
                         &bull;
                       </span>
-                      <time className="text-xs" dateTime={blog?.created_at}>
+                      <time
+                        className="text-xs text-gray-500"
+                        dateTime={blog?.created_at}>
                         {moment(blog?.created_at || blog?.updated_at).fromNow()}
                       </time>
                     </div>

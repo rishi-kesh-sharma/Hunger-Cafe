@@ -22,30 +22,40 @@ const CustomInput = ({ field, form, ...props }) => {
 
 export default function PlaceOrder({ open, handleOpen }) {
   const handleSubmit = async (values) => {
-    try {
-      const res = axios.post(
-        `${process.env.REACT_APP_API_URL}/${API_PATHS.ORDER}`,
+    let data = JSON.stringify({
+      type: "Delivery",
+      items: [1],
+      ...values,
+    });
 
-        { ...values, type: "Delivery" },
-        {
-          withCredentials: true,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: `${process.env.REACT_APP_API_URL}/${API_PATHS.ORDER}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
 
-      console.log(res, "response");
-
-      messageToast("success", "Message has Successfully been Sent!!!");
-    } catch (err) {
-      console.log(err);
-      messageToast(
-        "error",
-        `${err.response.message || err.message || "Message  cannot be Sent!!!"}`
-      );
-    }
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        handleOpen();
+        messageToast("success", "Your order is placed!!!");
+      })
+      .catch((err) => {
+        console.log(err);
+        messageToast(
+          "error",
+          `${
+            err.response.message ||
+            err.message ||
+            "Sorry could not place order!!!"
+          }`
+        );
+      });
   };
   const initialValues = {
     name: "",

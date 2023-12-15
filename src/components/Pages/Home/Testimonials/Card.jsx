@@ -23,7 +23,7 @@ const TestimonialsCard = ({ testimonial }) => {
           defaultImage={DefaultTestimonialImage}
           src={testimonial?.photo}
           alt="image"
-          className="w-[50px] h-[50px] object-contain  rounded-full "
+          className="w-[50px] h-[50px] object-cover rounded-full "
         />
         <div className="">
           <p className="font-semibold">{testimonial?.name}</p>

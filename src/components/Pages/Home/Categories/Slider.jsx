@@ -20,7 +20,7 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 10,
           slidesToScroll: 6,
-          infinite: true,
+          // infinite: true,
           dots: true,
           centerMode: false,
         },
@@ -30,7 +30,7 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 6,
           slidesToScroll: 5,
-          infinite: true,
+          // infinite: true,
           dots: true,
         },
       },
@@ -49,7 +49,7 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           dots: false,
 
           // autoPlay: true,
@@ -60,7 +60,7 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           dots: false,
 
           // autoPlay: true,
@@ -71,7 +71,7 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           dots: false,
           // autoPlay: true,
         },

@@ -267,7 +267,7 @@ export const footer = [
     title: "LINKS",
     text: [
       { list: "About", link: "/about" },
-      // { list: "Blog", link: "/blogs" },
+      { list: "Blog", link: "/blogs" },
       { list: "Contact", link: "/contact" },
       // { list: "Login", link: "/auth" },
     ],

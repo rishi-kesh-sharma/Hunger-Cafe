@@ -2,8 +2,10 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 import Swal from "sweetalert2";
+import { API_PATHS, validationRegex } from "../../../utils/constants";
 
 export const messageToast = (icon, title) => {
   const Toast = Swal.mixin({
@@ -26,26 +28,55 @@ export const messageToast = (icon, title) => {
 
 const ContactForm = () => {
   const handleSubmit = async (values) => {
-    try {
-      // const response = await createDocument("contact", values);
-      messageToast("success", "Message has Successfully been Sent!!!");
-    } catch (err) {
-      messageToast(
-        "error",
-        `${err.response.message || err.message || "Message  cannot be Sent!!!"}`
-      );
-    }
+    let data = JSON.stringify({
+      ...values,
+    });
+
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: `${process.env.REACT_APP_API_URL}/${API_PATHS.CONTACTS}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        messageToast("success", "We will respond you soon!!!");
+      })
+      .catch((err) => {
+        console.log(err);
+        messageToast(
+          "error",
+          `${
+            err.response.message ||
+            err.message ||
+            "Sorry could not send your message!!!"
+          }`
+        );
+      });
   };
   const initialValues = {
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   };
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(),
-    email: Yup.string().email().required(),
+    email: Yup.string()
+      .email()
+      .required()
+      .matches(validationRegex.email, "Invalid email "),
     subject: Yup.string().required(),
+    phone: Yup.string()
+      .required()
+      .matches(validationRegex.phone, "Invalid phone number"),
     message: Yup.string().required(),
   });
   return (
@@ -99,6 +130,28 @@ const ContactForm = () => {
               Email
             </label>
           </div>
+          <div className="relative">
+            <Field
+              type="text"
+              id="phone"
+              name="phone"
+              className="block  rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 border-0 border-b-[2.5px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#404040] focus:outline-none focus:ring-0 focus:border-[#404040] peer "
+              placeholder=" "
+            />
+            <ErrorMessage
+              name="phone"
+              className="text-[0.4rem] text-red-500 bg-red-300"
+              style={{ background: "red" }}>
+              {(msg) => (
+                <div className="text-red-500 text-sm mt-[0.3rem] ">{msg}</div>
+              )}
+            </ErrorMessage>
+            <label
+              for="phone"
+              className="text-[1.3rem] absolute   text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-0 z-10 origin-[0] left-2.5 peer-focus:text-gray-900 peer-focus:dark:text-gray-900  peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-5">
+              Phone
+            </label>
+          </div>
         </div>
         <div className="relative">
           <Field
@@ -139,11 +192,11 @@ const ContactForm = () => {
               <div className="text-red-500 text-sm mt-[0.3rem] ">{msg}</div>
             )}
           </ErrorMessage>
-          <label
+          <labelk
             for="message"
             className="text-[1.3rem] absolute  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-0 z-10 origin-[0] left-2.5  peer-focus:text-gray-900 peer-focus:dark:text-gray-900  peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-5">
             Message
-          </label>
+          </labelk>
         </div>
         <button
           type="submit"

@@ -23,7 +23,7 @@ const TestimonialsSlider = ({ testimonials }) => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           dots: true,
         },
       },
@@ -32,7 +32,7 @@ const TestimonialsSlider = ({ testimonials }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           dots: true,
         },
       },

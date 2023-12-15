@@ -35,7 +35,7 @@ const useFetch = ({
 
   useEffect(() => {
     fetchData();
-  }, [id]);
+  }, [id, path]);
   return { loading, error, data };
 };
 

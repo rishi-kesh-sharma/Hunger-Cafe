@@ -32,6 +32,7 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
   const handleAdd = (itemToAdd) => dispatch(addToCart(itemToAdd));
 
   const images = [...Array(4)]?.map((item) => product?.photo);
+  console.log(product, "the product");
 
   return (
     <>

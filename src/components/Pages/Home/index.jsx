@@ -43,20 +43,29 @@ const Home = () => {
   } = useFetch({ path: API_PATHS.GET_TESTIMONIALS });
 
   const loading = loading1 || loading2 || loading3 || loading4;
-  console.log(loading1, loading2, "loadings");
   if (loading) {
     return <Loading />;
   }
-  console.log(banners, "banners");
+  const specialProducts = products?.slice(0, 8);
+  const isRenderable = (data) => {
+    return data?.length > 0 ? true : false;
+  };
   return (
     <div className="bg-white relative !overflow-x-hidden">
       {banners?.length > 0 && (
         <BannerList banners={banners} isLoading={loading0} />
       )}
-      <Categories categories={categories} isLoading={loading1} />
-      <SpecialProducts products={products} />
+      {isRenderable([categories]) && (
+        <Categories categories={categories?.slice(0, 6)} isLoading={loading1} />
+      )}
+      {isRenderable(specialProducts) && (
+        <SpecialProducts products={specialProducts} />
+      )}
+
       <Faqs faqs={faqs} />
-      <Testimonials testimonials={testimonials} />
+      {isRenderable(testimonials) && (
+        <Testimonials testimonials={testimonials} />
+      )}
       <Contact />
     </div>
   );

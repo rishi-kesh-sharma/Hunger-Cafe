@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Section from "../../commons/Section";
 import SectionTitle from "../../commons/SectionTitle";
@@ -8,12 +8,31 @@ import Container from "../../commons/Container";
 import Pagination from "./Pagination";
 import useFetch from "../../../hooks/useFetch";
 import { API_PATHS } from "../../../utils/constants";
+import Loading from "../../commons/Loading";
 const Blogs = () => {
+  const limit = 12;
+
+  const next = () => {
+    setCurrentPageUrl(blogs?.next_page_url);
+  };
+
+  const prev = () => {
+    setCurrentPageUrl(blogs?.last_page_url);
+  };
+
+  const [currentPageUrl, setCurrentPageUrl] = useState(null);
+  useEffect(() => {
+    setCurrentPageUrl(`${API_PATHS.GET_BLOGS}?limit=${limit}`);
+  }, [currentPageUrl]);
   const {
     data: blogs,
-    loading: loading5,
-    error: error5,
-  } = useFetch({ path: API_PATHS.GET_BLOGS });
+    loading: loading,
+    error: error,
+  } = useFetch({ path: currentPageUrl });
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Section className="flex flex-col gap-[2rem] md:gap-[2rem] py-[2rem] bg-gray-50  mt-0 mb-0 ">
       <Container>
@@ -28,7 +47,14 @@ const Blogs = () => {
           Insights and Ideas: Explore Our Latest Blogs.
         </SectionDescription>
         <div className="flex flex-col items-start justify-start">
-          {<Pagination blogs={blogs} itemsPerPage={3} />}
+          {
+            <Pagination
+              blogs={blogs}
+              itemsPerPage={3}
+              next={next}
+              prev={prev}
+            />
+          }
         </div>
       </Container>
     </Section>

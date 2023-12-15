@@ -23,7 +23,7 @@ grid
  hover:shadow-md">
         <div className="w-[100%]  rounded-md">
           <CustomImage
-            className="w-full object-cover h-[150px] rounded-lg"
+            className="w-full object-contain h-[150px] rounded-lg"
             src={product?.photo}
             defaultImage={DefaultProductImage}
             height={80}

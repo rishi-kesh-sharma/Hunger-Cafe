@@ -12,8 +12,8 @@ import FaqImage from "../../../../images/faq.jpg";
 const FAQCards = ({ faqs }) => {
   return (
     <Section>
-      <Container className="grid grid-cols-2 gap-[3rem] items-center">
-        <div>
+      <Container className="grid grid-cols-2 gap-[3rem] items-center ">
+        <div className="col-span-2 md:col-span-1">
           <SectionTitle>FAQs</SectionTitle>
           <Accordion
             className=" border border-gray-400 rounded-lg"
@@ -57,7 +57,7 @@ const FAQCards = ({ faqs }) => {
             ))}
           </Accordion>
         </div>
-        <div>
+        <div className="hidden md:block">
           <img alt="image" src={FaqImage} />
         </div>
       </Container>

@@ -132,3 +132,14 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.slick-track {
+  margin-left: 0 !important;
+}
+
+/* disable cloning */
+/* .slick-slide .slick-active .slick-cloned {
+  display: none !important;
+} */
+
+/* slick-slide slick-active slick-cloned */

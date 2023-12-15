@@ -24,7 +24,7 @@ const SpecialProductSlider = ({ products }) => {
         settings: {
           slidesToShow: 5,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           dots: true,
           speed: 400,
         },
@@ -34,7 +34,7 @@ const SpecialProductSlider = ({ products }) => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           speed: 400,
         },
       },
@@ -44,7 +44,7 @@ const SpecialProductSlider = ({ products }) => {
           slidesToShow: 3,
           slidesToScroll: 1,
           speed: 400,
-          infinite: true,
+          // infinite: true,
         },
       },
       {
@@ -52,7 +52,7 @@ const SpecialProductSlider = ({ products }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: true,
+          // infinite: true,
           dots: false,
           autoplay: true,
           prevArrow: false,

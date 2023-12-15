@@ -28,13 +28,13 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
   };
   const handleAdd = (itemToAdd) => dispatch(addToCart(itemToAdd));
 
-  const images = [...Array(4)]?.map((item) => product?.image);
+  const images = [...Array(4)]?.map((item) => product?.photo);
 
   return (
     <>
       <Dialog open={open} handler={handleOpen}>
         <DialogHeader>{product.name}</DialogHeader>
-        <DialogBody className="grid  md:grid-cols-2 gap-[1.5rem]">
+        <DialogBody className="grid md:grid-cols-2 gap-[1.5rem]">
           <ProductImagesCarousel images={images} />
           <div className="flex flex-col gap-[1rem]">
             <p className="text-sm">
@@ -71,7 +71,7 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
                 +
               </button>
             </div> */}
-            <p className="text-primary">Rs {product?.itemPrice}</p>
+            <p className="text-primary">Rs {product?.price}</p>
             {isAlreadyInCart ? (
               <Link
                 to="/cart"

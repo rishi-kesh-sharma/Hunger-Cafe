@@ -34,7 +34,7 @@ const BannerList = ({ isLoading, banners }) => {
   });
   useEffect(() => {
     const interval = setInterval(() => {
-      instanceRef.current.next();
+      instanceRef?.current?.next();
     }, 3000);
     clearInterval();
   }, []);
@@ -45,18 +45,18 @@ const BannerList = ({ isLoading, banners }) => {
 
   return (
     <Section className="mt-0">
-      <Container>
-        {isLoading ? (
-          <LoadingSkeleton />
-        ) : (
-          <div ref={sliderRef} className="keen-slider">
-            {banners.length > 0 &&
-              banners?.map((banner, index) => (
-                <Banner banner={banner} key={banner.id || index} />
-              ))}
-          </div>
-        )}
-      </Container>
+      {/* <Container> */}
+      {isLoading ? (
+        <LoadingSkeleton />
+      ) : (
+        <div ref={sliderRef} className="keen-slider">
+          {banners.length > 0 &&
+            banners?.map((banner, index) => (
+              <Banner banner={banner} key={banner.id || index} />
+            ))}
+        </div>
+      )}
+      {/* </Container> */}
     </Section>
   );
 };
