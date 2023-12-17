@@ -2,7 +2,7 @@ import React from "react";
 import { FaPhone } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaAddressBook } from "react-icons/fa6";
-import LogoImage from "../../../../images/logo.png";
+import LogoImage from "../../../images/logo.png";
 
 const Info = () => {
   return (
