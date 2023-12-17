@@ -57,8 +57,8 @@ grid
           </p>
 
           <div className="flex items-center w-full mt-3 space-x-3 text-gray-500 dark:text-gray-400 justify-between">
-            <time className="text-sm" dateTime={blog.createdAt}>
-              {moment(blog.createdAt)?.fromNow()}
+            <time className="text-xs text-gray-500" dateTime={blog?.created_at}>
+              {moment(blog?.created_at || blog?.updated_at).fromNow()}
             </time>
           </div>
         </div>

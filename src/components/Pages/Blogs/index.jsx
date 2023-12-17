@@ -66,7 +66,7 @@ const Blogs = () => {
             Insights and Ideas: Explore Our Latest Blogs.
           </SectionDescription>
           {isRenderable(blogs?.data) ? (
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center ">
               <Pagination
                 blogs={blogs}
                 next={next}
