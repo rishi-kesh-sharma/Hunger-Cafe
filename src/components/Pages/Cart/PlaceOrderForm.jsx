@@ -14,17 +14,22 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import messageToast from "../../../utils/messageToast";
 import axios from "axios";
-import { API_PATHS } from "../../../utils/constants";
+import { API_PATHS, validationRegex } from "../../../utils/constants";
 
 const CustomInput = ({ field, form, ...props }) => {
   return <Input {...field} {...props} />;
 };
 
-export default function PlaceOrder({ open, handleOpen }) {
+export default function PlaceOrder({
+  open,
+  handleOpen,
+  itemsId,
+  itemsQuantity,
+}) {
   const handleSubmit = async (values) => {
     let data = JSON.stringify({
       type: "Delivery",
-      items: [1],
+      items: [itemsId, itemsQuantity],
       ...values,
     });
 
@@ -66,12 +71,19 @@ export default function PlaceOrder({ open, handleOpen }) {
   };
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(),
-    email: Yup.string().email().required(),
-    phone: Yup.string().required(),
-    address: Yup.string().required(),
+    email: Yup.string()
+      .email()
+      .required()
+      .matches(validationRegex.email, "Invalid email"),
+    phone: Yup.string()
+      .required()
+      .matches(validationRegex.phone, "Invalid phone number"),
+    address: Yup.string()
+      .required()
+      .min(3, "Address must be at least 3 characters long")
+      .max(50, "Address cannot be 50 characters long"),
     type: Yup.string().optional(),
   });
-
   return (
     <>
       <Dialog

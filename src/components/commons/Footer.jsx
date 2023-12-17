@@ -52,7 +52,7 @@ const Footer = () => {
         <div className={` legal`}>
           <span className="text-sm">
             <span className="mr-[0.1rem] text-sm">© 2023 Hunger Cafe.</span>{" "}
-            Designed By{" "}
+            Designed and Developed By{" "}
             <a
               target="_blank"
               rel="noreferrer"

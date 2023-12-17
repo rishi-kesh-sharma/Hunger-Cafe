@@ -8,6 +8,7 @@ const useFetch = ({
   body = {},
   params = {},
   query = {},
+  url,
 }) => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ const useFetch = ({
     try {
       setLoading(true);
       const res = await axios[method](
-        `${process.env.REACT_APP_API_URL}/${path}`,
+        url ? url : `${process.env.REACT_APP_API_URL}/${path}`,
         {
           query,
           params,
@@ -25,7 +26,6 @@ const useFetch = ({
         }
       );
       setLoading(false);
-      console.log(res.data, "res.data");
       setData(res?.data?.data);
     } catch (err) {
       setLoading(false);
@@ -35,7 +35,7 @@ const useFetch = ({
 
   useEffect(() => {
     fetchData();
-  }, [id, path]);
+  }, [id, path, url]);
   return { loading, error, data };
 };
 

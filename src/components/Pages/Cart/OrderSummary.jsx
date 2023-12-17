@@ -4,14 +4,13 @@ import {
   selectTotalPrice,
 } from "../../../features/cart/cartSlice";
 
-const OrderSummary = ({ handleOpen, open }) => {
+const OrderSummary = ({ handleOpen, open, itemsId, itemsQuantity }) => {
   const cartItems = useSelector(selectItemsInCart);
   const totalPrice = useSelector(selectTotalPrice);
   const discount = totalPrice * 0.1;
   const deliveryCharges = totalPrice * 0.05;
   // const totalAmt = totalPrice + deliveryCharges - discount;
   const totalAmt = totalPrice;
-  console.log(open);
 
   return (
     <div className="basis-5/12 h-fit sticky top-35 p-8 rounded-md border shadow-md  md:m-0">

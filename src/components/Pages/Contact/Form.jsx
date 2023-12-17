@@ -68,16 +68,25 @@ const ContactForm = () => {
     message: "",
   };
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(),
+    name: Yup.string()
+      .required()
+      .min(2, "Name must be 2 characters long")
+      .max(40, "Name cannot be more than 40 characters"),
     email: Yup.string()
       .email()
       .required()
       .matches(validationRegex.email, "Invalid email "),
-    subject: Yup.string().required(),
+    subject: Yup.string()
+      .required()
+      .min(5, "Subject must be 5 character long")
+      .max(100, "Subject cannot be more than 100 characters "),
     phone: Yup.string()
       .required()
       .matches(validationRegex.phone, "Invalid phone number"),
-    message: Yup.string().required(),
+    message: Yup.string()
+      .required()
+      .min("message must be 10 character long")
+      .max(300, "message cannot be greater than 300 characters"),
   });
   return (
     <Formik

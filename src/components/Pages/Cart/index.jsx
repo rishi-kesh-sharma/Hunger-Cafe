@@ -10,6 +10,12 @@ const Cart = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
 
+  const itemsId = cartItems?.map((item) => {
+    return item?.item?.id;
+  });
+  const itemsQuantity = cartItems?.map((item) => {
+    return item?.quantity;
+  });
   return (
     <div className="container-max py-8 lg:pb-16">
       {/* <h1 className="text-2xl my-4 font-semibold">Cart</h1> */}
@@ -20,10 +26,21 @@ const Cart = () => {
         <ItemList />
         {/* order summary */}
         {cartItems && cartItems.length !== 0 && (
-          <OrderSummary handleOpen={handleOpen} open={open} />
+          <OrderSummary
+            itemsId={itemsId}
+            itemsQuantity={itemsQuantity}
+            handleOpen={handleOpen}
+            open={open}
+          />
         )}
       </div>
-      <PlaceOrder cartItems={cartItems} handleOpen={handleOpen} open={open} />
+      <PlaceOrder
+        itemsId={itemsId}
+        itemsQuantity={itemsQuantity}
+        cartItems={cartItems}
+        handleOpen={handleOpen}
+        open={open}
+      />
     </div>
   );
 };

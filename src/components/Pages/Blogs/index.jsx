@@ -12,33 +12,35 @@ import Loading from "../../commons/Loading";
 import NoData from "../../commons/NoData";
 import Banner from "../../commons/Banner";
 const Blogs = () => {
-  const limit = 12;
+  const limit = 1;
+  const [currentPageUrl, setCurrentPageUrl] = useState(null);
+
+  useEffect(() => {
+    setCurrentPageUrl(
+      `${process.env.REACT_APP_API_URL}/${API_PATHS.GET_BLOGS}?limit=${limit}`
+    );
+  }, []);
+
+  const {
+    data: blogs,
+    loading: loading,
+    error: error,
+  } = useFetch({
+    url: `${currentPageUrl}&limit=${limit}`,
+  });
 
   const next = () => {
     setCurrentPageUrl(blogs?.next_page_url);
   };
 
   const prev = () => {
-    setCurrentPageUrl(blogs?.last_page_url);
+    setCurrentPageUrl(blogs?.prev_page_url);
   };
-
-  const [currentPageUrl, setCurrentPageUrl] = useState(null);
-  useEffect(() => {
-    setCurrentPageUrl(`${API_PATHS.GET_BLOGS}?limit=${limit}`);
-  }, [currentPageUrl]);
-  const {
-    data: blogs,
-    loading: loading,
-    error: error,
-  } = useFetch({ path: currentPageUrl });
 
   const isRenderable = (data) => {
     return data?.length > 0 ? true : false;
   };
 
-  if (loading) {
-    return <Loading />;
-  }
   return (
     <div>
       <Banner title="Our Blogs" breadCrumbs={["Home", "Blogs"]} />
@@ -56,12 +58,12 @@ const Blogs = () => {
             Insights and Ideas: Explore Our Latest Blogs.
           </SectionDescription>
           {isRenderable(blogs?.data) ? (
-            <div className="flex flex-col items-start justify-start">
+            <div className="flex flex-col items-center justify-center">
               <Pagination
                 blogs={blogs}
-                itemsPerPage={3}
                 next={next}
                 prev={prev}
+                loading={loading}
               />
             </div>
           ) : (
