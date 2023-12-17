@@ -32,7 +32,7 @@ export function SideBar({
           Sub Categories
         </Typography>
 
-        <List className="p-0 m-0 mt-[1rem] flex flex-row md:flex-col flex-wrap gap-2 md:gap-[0.5rem]  md:w-full">
+        <List className=" min-w-[180px] p-0 m-0 mt-[1rem] flex flex-row md:flex-col flex-wrap gap-2 md:gap-[0.5rem]  md:w-full">
           {subCategories?.map((category, index) => {
             return (
               <li

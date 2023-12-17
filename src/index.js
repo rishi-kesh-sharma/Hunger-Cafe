@@ -12,6 +12,7 @@ import "./styles.css";
 import Products from "./pages/Products";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
+import Loader from "./components/commons/Loading";
 
 const Contact = lazy(() => import("./pages/Contact"));
 
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<Loader />}>
             <Contact />
           </Suspense>
         ),

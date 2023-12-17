@@ -92,7 +92,7 @@ export default function PlaceOrder({
         handler={handleOpen}
         className="bg-transparent shadow-none">
         <Card className="mx-auto w-full">
-          <CardBody className="flex flex-col gap-4">
+          <CardBody className="flex flex-col  md:gap-4">
             <Typography variant="h6" color="blue-gray">
               Your Contact Info
             </Typography>
@@ -180,7 +180,7 @@ export default function PlaceOrder({
                     )}
                   </ErrorMessage>
                 </div>
-                <CardFooter className="pt-0 px-0">
+                <CardFooter className="pt-0 px-0 pb-0 ">
                   <Button type="submit" className="bg-primary px-0" fullWidth>
                     Place Order
                   </Button>

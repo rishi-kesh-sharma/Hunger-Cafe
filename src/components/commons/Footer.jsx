@@ -13,7 +13,7 @@ const Footer = () => {
         <footer className={` footer `}>
           <div className={`container gap-0`}>
             <div className={`box `}>
-              <div className={` logo text-white `}>
+              <div className={` logo text-white   `}>
                 <Logo />
                 <h1 className="text-xs text-gray-400 mt-1 max-w-[300px] hidden md:block md:text-start lg:text-start">
                   Savor the Moment, Delight in Every Bite: Where Every Meal
