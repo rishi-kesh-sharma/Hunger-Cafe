@@ -115,6 +115,28 @@ const ContactForm = () => {
               Email
             </label>
           </div>
+          <div className="relative">
+            <Field
+              type="text"
+              id="phone"
+              name="phone"
+              className="block  rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 border-0 border-b-[2.5px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#404040] focus:outline-none focus:ring-0 focus:border-[#404040] peer "
+              placeholder=" "
+            />
+            <ErrorMessage
+              name="phone"
+              className="text-[0.4rem] text-red-500 bg-red-300"
+              style={{ background: "red" }}>
+              {(msg) => (
+                <div className="text-red-500 text-sm mt-[0.3rem] ">{msg}</div>
+              )}
+            </ErrorMessage>
+            <label
+              for="phone"
+              className="text-[1.3rem] absolute   text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-0 z-10 origin-[0] left-2.5 peer-focus:text-gray-900 peer-focus:dark:text-gray-900  peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-5">
+              Phone
+            </label>
+          </div>
         </div>
         <div className="relative">
           <Field

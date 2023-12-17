@@ -30,11 +30,19 @@ const Blogs = () => {
   });
 
   const next = () => {
-    setCurrentPageUrl(blogs?.next_page_url);
+    setCurrentPageUrl(
+      `${process.env.REACT_APP_API_URL}/${API_PATHS.GET_BLOGS}?page=${
+        blogs?.current_page + 1
+      }&limit=${limit}`
+    );
   };
 
   const prev = () => {
-    setCurrentPageUrl(blogs?.prev_page_url);
+    setCurrentPageUrl(
+      `${process.env.REACT_APP_API_URL}/${API_PATHS.GET_BLOGS}?page=${
+        blogs?.current_page - 1
+      }&limit=${limit}`
+    );
   };
 
   const isRenderable = (data) => {
