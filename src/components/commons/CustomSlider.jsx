@@ -11,7 +11,7 @@ export function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <button
-      className="next absolute top-[45%]  left-[-12px] md:left-[-20px] lg:-left-[60px] bg-primary w-7 h-7 lg:w-12 lg:h-12  rounded-full flex justify-center items-center text-white "
+      className="next absolute top-[45%]  left-[-12px] md:left-[-40px] lg:-left-[60px] bg-primary w-7 h-7 lg:w-12 lg:h-12  rounded-full flex justify-center items-center text-white "
       onClick={onClick}>
       <BsArrowLeft />
     </button>
@@ -22,7 +22,7 @@ export function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
     <button
-      className="next absolute top-[45%] right-[-12px] md:right-[-20px]  lg:-right-[60px]  bg-primary h-7 w-7 lg:w-12 lg:h-12  rounded-full flex justify-center items-center text-white"
+      className="next absolute top-[45%] right-[-12px] md:right-[-40px]  lg:-right-[60px]  bg-primary h-7 w-7 lg:w-12 lg:h-12  rounded-full flex justify-center items-center text-white"
       onClick={onClick}>
       <BsArrowRight />
     </button>
@@ -78,7 +78,7 @@ const CustomSlider = ({ children, settings }) => {
   };
   return (
     <Section className="mt-0 relative mx-0 ">
-      <Container className="w-full 2xl:w-[93%] md:w-[90%] mx-0  ">
+      <Container className="w-full mx-0 md:w-[90%] 2xl:w-[93%] md:mx-auto  ">
         <Slider {...settings} className="">
           {children}
         </Slider>

@@ -30,10 +30,6 @@ const Products = () => {
     path: `${API_PATHS.GET_PRODUCTS}?category=${currentSubCategory}`,
   });
 
-  // console.log(currentSubCategory, "current subCAtegory");
-
-  console.log(currentSubCategory, "current");
-
   if (loading1) {
     return <Loading />;
   }
@@ -67,6 +63,7 @@ const Products = () => {
     <Section className="py-[2rem] my-0">
       <Container className="grid md:grid-cols-3 lg:grid-cols-4 md:gap-[2rem]">
         <SideBar
+          category
           subCategories={subCategories}
           currentSubCategory={currentSubCategory}
           setCurrentSubCategory={setCurrentSubCategory}

@@ -1,5 +1,5 @@
 import React from "react";
-import NoDataImage from "../images/nodata.png";
+import NoDataImage from "../../images/nodata.png";
 
 const NoData = ({ text }) => {
   return (
@@ -7,7 +7,7 @@ const NoData = ({ text }) => {
       <div className="w-full rounded-full flex items-center justify-center bg-center">
         <figure className="w-[200px] h-[200px] m-auto">
           <img
-            src={NoData}
+            src={NoDataImage}
             alt="no_data"
             className="object-cover h-full w-full rounded-lg"
             objectFit="cover"

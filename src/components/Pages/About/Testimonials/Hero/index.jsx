@@ -8,7 +8,12 @@ import SectionTitle from "../../../../commons/SectionTitle";
 import { FaFacebook, FaInstagram, FaLink, FaLinkedin } from "react-icons/fa";
 import { chefs, features } from "../../../../../data";
 import Section from "../../../../commons/Section";
+
 const Hero = ({ teams }) => {
+  const isRenderable = (data) => {
+    return data?.length > 0 ? true : false;
+  };
+
   return (
     <div>
       <div className=" flex flex-col gap-[1rem]">
@@ -78,45 +83,47 @@ const Hero = ({ teams }) => {
             </div>
           }
         </Section>
-        <Section className="flex flex-col">
-          <SectionTitle>Our Chefs</SectionTitle>
-          {
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-[1rem]">
-              {teams?.slice(0, 3)?.map((team, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="border p-[0.5rem] rounded-lg shadow-lg flex flex-col gap-[1rem]">
-                    <img
-                      alt="image"
-                      src={team?.photo}
-                      className="h-[200px] w-full object-cover rounded-lg"
-                    />
-                    <div>
-                      <h2 className="text-lg font-semibold text-primary">
-                        {team.name}
-                      </h2>
-                      <p className="text-sm text-gray-500 ">
-                        {team?.designation}
-                      </p>
+        {isRenderable(teams) && (
+          <Section className="flex flex-col">
+            <SectionTitle>Our Team</SectionTitle>
+            {
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-[1rem]">
+                {teams?.slice(0, 3)?.map((team, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="border p-[0.5rem] rounded-lg shadow-lg flex flex-col gap-[1rem]">
+                      <img
+                        alt="image"
+                        src={team?.photo}
+                        className="h-[200px] w-full object-cover rounded-lg"
+                      />
+                      <div>
+                        <h2 className="text-lg font-semibold text-primary">
+                          {team.name}
+                        </h2>
+                        <p className="text-sm text-gray-500 ">
+                          {team?.designation}
+                        </p>
+                      </div>
+                      <div className="flex gap-2 items-center">
+                        <a className="text-blue-500" href={team?.facebook}>
+                          <FaFacebook />
+                        </a>
+                        <a className="text-blue-500" href={team?.facebook}>
+                          <FaInstagram />
+                        </a>
+                        <a className="text-blue-500" href={team?.facebook}>
+                          <FaLinkedin />
+                        </a>
+                      </div>
                     </div>
-                    <div className="flex gap-2 items-center">
-                      <a className="text-blue-500" href={team?.facebook}>
-                        <FaFacebook />
-                      </a>
-                      <a className="text-blue-500" href={team?.facebook}>
-                        <FaInstagram />
-                      </a>
-                      <a className="text-blue-500" href={team?.facebook}>
-                        <FaLinkedin />
-                      </a>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          }
-        </Section>
+                  );
+                })}
+              </div>
+            }
+          </Section>
+        )}
       </div>
     </div>
   );

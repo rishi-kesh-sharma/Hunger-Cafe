@@ -9,7 +9,7 @@ export function ProductImagesCarousel({ images }) {
             key={index}
             src={image}
             alt="image"
-            className="w-full h-[150px] md:h-full object-cover"
+            className="w-full h-[150px] md:h-full object-contain "
           />
         );
       })}

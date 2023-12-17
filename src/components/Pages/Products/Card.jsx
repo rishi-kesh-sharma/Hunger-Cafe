@@ -25,7 +25,7 @@ grid
         <div className="w-[100%]  rounded-md">
           {/* <a href={`/product/${product?.id}`}> */}
           <CustomImage
-            className="w-full object-cover h-[150px] rounded-lg"
+            className="w-full object-contain h-[180px] rounded-lg"
             src={product?.photo}
             defaultImage={DefaultProductImage}
             height={80}

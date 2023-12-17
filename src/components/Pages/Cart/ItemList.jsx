@@ -42,7 +42,7 @@ const CartItemList = () => {
             <div className="basis-3/12">
               <CustomImage
                 defaultImage={DefaultProductImage}
-                className="w-full h-full md:h-auto object-cover block rounded-md aspect-square"
+                className="w-full h-full md:h-auto object-contain block rounded-md aspect-square"
                 // src={CDN_URL + item?.imageId}
                 src={cartItem?.item?.photo}
                 alt="image"
@@ -77,7 +77,7 @@ const CartItemList = () => {
                     onClick={() => decreaseQuantity(cartItem?.item?.id)}
                     disabled={cartItem?.quantity === 1}
                     className={
-                      "bg-orange-500 disabled:bg-orange-500/50 disabled:cursor-not-allowed text-white font-bold w-8 h-8 rounded-md"
+                      "bg-primary disabled:bg-primary/40 disabled:cursor-not-allowed text-white font-bold w-8 h-8 rounded-md"
                     }>
                     -
                   </button>
@@ -86,7 +86,7 @@ const CartItemList = () => {
                   </p>
                   <button
                     onClick={() => increaseQuantity(cartItem?.item?.id)}
-                    className="bg-orange-500 text-white font-bold w-8 h-8 rounded-md">
+                    className="bg-primary text-white font-bold w-8 h-8 rounded-md">
                     +
                   </button>
                 </div>

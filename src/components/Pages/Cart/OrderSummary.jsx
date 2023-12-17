@@ -40,13 +40,11 @@ const OrderSummary = ({ handleOpen, open }) => {
       <div className="py-4 border-b">
         <div className="md:flex justify-between items-center font-bold text-lg md:text-2xl">
           <h1>Total Amount</h1>
-          <h1 className="text-orange-500">
-            ₹ {parseFloat(totalAmt).toFixed(2)}
-          </h1>
+          <h1 className="text-primary">₹ {parseFloat(totalAmt).toFixed(2)}</h1>
         </div>
       </div>
       <button
-        className="w-full block mt-4 uppercase font-bold text-lg bg-orange-600 text-white text-center p-3 rounded-md"
+        className="w-full block mt-4 uppercase font-bold text-lg bg-primary text-white text-center p-3 rounded-md"
         onClick={handleOpen}>
         Checkout
       </button>

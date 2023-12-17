@@ -12,7 +12,7 @@ const Category = ({ category }) => {
         // src={category?.image}
         src={category?.photo}
         defaultImage={defaultImage}
-        className="h-[60px] w-[60px] sm:w-[70px] sm:h-[70px] pointer-events-none rounded-full "
+        className="h-[60px] w-[60px] sm:w-[70px] sm:h-[70px] object-contain pointer-events-none rounded-full "
         alt="image"
       />
       <p className="text-sm sm:text-md text-center">{category?.name}</p>

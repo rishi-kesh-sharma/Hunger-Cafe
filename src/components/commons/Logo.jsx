@@ -7,7 +7,13 @@ const Logo = () => {
       to="/"
       data-testid="logo"
       className="text-xl lg:text-2xl font-semibold flex items-center">
-      <Logo />
+      {/* <LogoImage />
+       */}
+      <img
+        src={LogoImage}
+        alt="logo"
+        className="h-[60px] w-[60px] object-contain"
+      />
     </Link>
   );
 };

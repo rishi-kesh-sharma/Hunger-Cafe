@@ -7,7 +7,7 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/solid";
 import { FaBloggerB } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectItemsInCart } from "../../features/cart/cartSlice";
 import {
@@ -24,19 +24,20 @@ const Header = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectItemsInCart);
 
+  const router = useLocation();
+  const pathname = router.pathname;
   const handleToggleMenu = () => dispatch(toggleMenu());
 
   return (
-    <Section className="sticky w-full top-0 bg-white z-20 py-4 border-b shadow-sm border-gray-100 mt-0">
-      <Container className="flex justify-between items-center">
+    <Section className="sticky w-full top-0 bg-white z-[200] border-b shadow-sm border-gray-100 mt-0 h-[70px] ">
+      <Container className="flex justify-between items-center h-full">
         <div className="flex items-center gap-2 md:gap-4">
           <Logo />
         </div>
-
         <ul className="text-zinc-700 ml-auto gap-2 md:gap-2 lg:gap-4 items-center hidden md:flex">
           <li>
             <Link
-              to="/"
+              to=""
               className="p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2">
               <HomeIcon className="w-4 h-4 text-gray-700" />{" "}
               <p className="hidden md:block">Home</p>
@@ -72,7 +73,7 @@ const Header = () => {
               <ShoppingBagIcon className="w-4 h-4 text-gray-700" />{" "}
               <p className="hidden md:block">Cart</p>
               {
-                <p className="absolute -top-1 -right-1 bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full">
+                <p className="absolute -top-1 -right-1 bg-primary text-secondary flex justify-center items-center w-5 h-5 text-xs rounded-full">
                   {items.length}
                 </p>
               }
@@ -130,7 +131,7 @@ const Header = () => {
                     <ShoppingBagIcon className="w-4 h-4 text-gray-700" />{" "}
                     <p>Cart</p>
                     {
-                      <p className="absolute -top-1 -right-1 bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full">
+                      <p className="absolute -top-1 -right-1 bg-primary text-secondary flex justify-center items-center w-5 h-5 text-xs rounded-full">
                         {items.length}
                       </p>
                     }
@@ -143,14 +144,6 @@ const Header = () => {
           <div className="shadow-lg transition-all md:hidden absolute top-full right-0 bg-white h-screen pt-[1rem]  w-[200px]">
             <>
               <ul className="text-zinc-700 space-y-2 w-full ">
-                {/* <li>
-                  <Link
-                    to="/search"
-                    className="p-2 md:px-4 hover:bg-gray-50 rounded-md flex items-center gap-2">
-                    <MagnifyingGlassIcon className="w-4 h-4 text-gray-700" />{" "}
-                    <p>Search</p>
-                  </Link>
-                </li> */}
                 <li className="border-b w-full h-full">
                   <Link
                     to="/"
@@ -189,26 +182,13 @@ const Header = () => {
                     <ShoppingBagIcon className="w-4 h-4 text-gray-700" />{" "}
                     <p>Cart</p>
                     {
-                      <p className="absolute right-2 md:-top-1 md:-right-1 bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full">
+                      <p className="absolute right-2 md:-top-1 md:-right-1 bg-primary text-white flex justify-center items-center w-5 h-5 text-xs rounded-full">
                         {items.length}
                       </p>
                     }
                   </Link>
                 </li>
               </ul>
-              {/* {isLoading ? null : isAuthenticated ? (
-                <button
-                  onClick={() => loginWithRedirect()}
-                  className="ml-4 bg-orange-400 text-white p-2 px-4 rounded-md items-center gap-2 hidden md:flex">
-                  Logout{" "}
-                </button>
-              ) : (
-                <button
-                  onClick={() => loginWithRedirect()}
-                  className="ml-4 bg-orange-400 text-white p-2 px-4 rounded-md items-center gap-2 hidden md:flex">
-                  Login
-                </button>
-              )} */}
             </>
           </div>
         )}

@@ -19,17 +19,24 @@ export default function About() {
     error: error2,
   } = useFetch({ path: API_PATHS.GET_TESTIMONIALS });
 
+  const isRenderable = (data) => {
+    return data?.length > 0 ? true : false;
+  };
+
   const loading = loading1 || loading2;
   if (loading) {
     return <Loading />;
   }
+
   return (
     <div>
       <Banner title="About Us" breadCrumbs={["Home", "About"]} />
       <Section className="mb-[2rem]">
         <Container>
           <Hero teams={teams} />
-          <Testimonials testimonials={testimonials} />
+          {isRenderable(testimonials) && (
+            <Testimonials testimonials={testimonials} />
+          )}
         </Container>
       </Section>
     </div>

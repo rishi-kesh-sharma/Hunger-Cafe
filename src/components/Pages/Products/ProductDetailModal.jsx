@@ -4,6 +4,7 @@ import Carousel, { ProductImagesCarousel } from "./Carousel";
 import { addToCart, selectItemsInCart } from "../../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import CustomImage from "../../commons/CustomImage";
 
 export default function ProductDetailModal({ open, handleOpen, product }) {
   const dispatch = useDispatch();
@@ -28,14 +29,18 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
   };
   const handleAdd = (itemToAdd) => dispatch(addToCart(itemToAdd));
 
-  const images = [...Array(4)]?.map((item) => product?.photo);
+  // const images = [...Array(1)]?.map((item) => product?.photo);
 
   return (
     <>
-      <Dialog open={open} handler={handleOpen}>
+      <Dialog size="xs" open={open} handler={handleOpen}>
         <DialogHeader>{product.name}</DialogHeader>
         <DialogBody className="grid md:grid-cols-2 gap-[1.5rem]">
-          <ProductImagesCarousel images={images} />
+          {/* <ProductImagesCarousel images={images} /> */}
+          <CustomImage
+            src={product?.photo}
+            className="w-full h-[130px] md:h-full object-contain rounded-lg"
+          />
           <div className="flex flex-col gap-[1rem]">
             <p className="text-sm">
               {product?.description?.length > 200
@@ -58,7 +63,7 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
                 onClick={() => decreaseQuantity(product?.id)}
                 disabled={quantity <= 1}
                 className={
-                  "bg-orange-500 disabled:bg-orange-500/50 disabled:cursor-not-allowed text-white font-bold w-8 h-8 rounded-md"
+                  "bg-primary disabled:bg-primary/50 disabled:cursor-not-allowed text-white font-bold w-8 h-8 rounded-md"
                 }>
                 -
               </button>
@@ -67,7 +72,7 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
               </p>
               <button
                 onClick={() => increaseQuantity(product?.id)}
-                className="bg-orange-500 text-white font-bold w-8 h-8 rounded-md">
+                className="bg-primary text-white font-bold w-8 h-8 rounded-md">
                 +
               </button>
             </div> */}
