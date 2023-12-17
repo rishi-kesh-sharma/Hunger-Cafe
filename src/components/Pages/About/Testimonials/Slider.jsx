@@ -63,7 +63,7 @@ const TestimonialsSlider = ({ testimonials }) => {
       {/* ALL TESTIMONIALS */}
       {testimonials?.map((testimonial, index) => {
         return (
-          <div key={index} className="">
+          <div key={index} className="md:p-5">
             <TestimonialsCard testimonial={testimonial} key={index} />
           </div>
         );

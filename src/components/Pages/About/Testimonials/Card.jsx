@@ -26,7 +26,7 @@ const TestimonialsCard = ({ testimonial }) => {
           className="w-[50px] h-[50px] object-cover rounded-full "
         />
         <div className="">
-          <p className="font-semibold">{testimonial?.name}</p>
+          <p className="font-semibold text-primary">{testimonial?.name}</p>
           <p className="text-gray-500 text-xs">{testimonial?.designation}</p>
         </div>
         <p className="text-gray-500 text-xs">
