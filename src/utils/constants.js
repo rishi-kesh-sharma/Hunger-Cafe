@@ -8,7 +8,7 @@ export const API_PATHS = {
   GET_PRODUCTS: "products",
   GET_TEAM: "teams",
   GET_BLOG_DETAIL: (slug) => `blogs/${slug}`,
-  GET_RELATED_BLOGS: (categoryId) => `blogs?category=${categoryId}`,
+  GET_RELATED_BLOGS: (categoryId) => `blogs?category=${categoryId}&limit=3`,
   ORDER: `orders`,
   CONTACTS: `contacts`,
 };

@@ -287,7 +287,7 @@ export const footer = [
     text: [
       { cursor: false, list: "info@hungercafe.com" },
       { cursor: false, list: "+61 4100 111 66" },
-      { cursor: false, list: "Lagankhel,Lalitpur" },
+      { cursor: false, list: "Sydney,Australia" },
       {
         type: "external",
         list: (

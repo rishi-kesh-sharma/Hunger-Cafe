@@ -21,6 +21,7 @@ export function SideBar({
   currentSubCategory,
   setCurrentSubCategory,
 }) {
+  console.log(currentSubCategory, "current sub category");
   return (
     <Card className=" md:grid-cols-1 lg:grid-cols-1 overflow-x-hidden  w-full  p-2  shadow-none md:shadow-xl md:shadow-blue-gray-900/5 md:border h-auto ">
       <div className="mb-2 p-0 w-full ">
@@ -34,14 +35,18 @@ export function SideBar({
         <List className="p-0 m-0 mt-[1rem] flex flex-row md:flex-col flex-wrap gap-2 md:gap-[0.5rem]  md:w-full">
           {subCategories?.map((category, index) => {
             return (
-              <ListItem
+              <li
                 onClick={() => {
                   setCurrentSubCategory(category?.id);
                 }}
                 key={index}
-                className="w-auto border md:border-none md:w-full p-2 m-0">
+                className={`w-auto border md:border-none md:w-full p-2 m-0 active:bg-none focus:bg-none flex rounded-lg cursor-pointer ${
+                  currentSubCategory != category?.id && "hover:bg-secondary/50"
+                } ${
+                  currentSubCategory == category?.id &&
+                  "bg-primary text-secondary "
+                }`}>
                 <ListItemPrefix className="">
-                  {/* <PresentationChartBarIcon className="h-5 w-5" /> */}
                   <CustomImage
                     defaultImage={DefaultCategoryImage}
                     alt="image"
@@ -50,7 +55,7 @@ export function SideBar({
                   />
                 </ListItemPrefix>
                 {category.name}
-              </ListItem>
+              </li>
             );
           })}
         </List>

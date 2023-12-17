@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { MdNoPhotography } from "react-icons/md";
 import CustomImage from "../../commons/CustomImage.jsx";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Card } from "@material-tailwind/react";
 import Container from "../../commons/Container.jsx";
 import { API_PATHS } from "../../../utils/constants.js";
@@ -26,15 +26,11 @@ const BlogDetail = () => {
     loading: loading2,
     error: error2,
   } = useFetch({ path: API_PATHS.GET_RELATED_BLOGS(blog?.category) });
-
   const text = blog?.description && cheerio?.load(blog?.description).text();
-
   const loading = loading1 || loading2;
-
   if (loading) {
     return <Loading />;
   }
-
   return (
     <div className="">
       <main>
@@ -87,7 +83,8 @@ const BlogDetail = () => {
 };
 
 const BlogSection = ({ blogs }) => {
-  console.log(blogs, "blogs from section");
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="">
@@ -96,28 +93,31 @@ const BlogSection = ({ blogs }) => {
         </h2>
         <div className=" grid grid-cols-1 md:grid-cols-3  lg:flex lg:flex-col gap-5  ">
           {blogs?.data?.slice(0, 3)?.map((blog, index) => {
+            console.log(blog?.slug, "slug");
             return (
-              <Link href={`/blog/${blog?.slug}`} key={index}>
+              <div
+                onClick={() => {
+                  navigate(`/blog/${blog?.slug}`);
+                }}
+                key={blog?.slug}>
                 <Card className="cursor-pointer bg-white shadow-lg rounded-lg  p-5  w-full min-h-[210px] gap-[1rem]">
                   <div className="w-full  flex items-center justify-between ">
                     <CardImage className=" rounded-lg w-[100px] md:w-[70px] lg:w-[100px]  h-[60px] lg:h-[80px] ">
-                      <Link href={`/blog/${blog?.slug}`}>
-                        {blog?.photo ? (
-                          <>
-                            <CustomImage
-                              alt="image"
-                              src={blog?.photo}
-                              className="transition-all rounded-lg h-full "
-                              width={1000}
-                              height={1000}
-                            />
-                          </>
-                        ) : (
-                          <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                            <MdNoPhotography />
-                          </span>
-                        )}
-                      </Link>
+                      {blog?.photo ? (
+                        <>
+                          <CustomImage
+                            alt="image"
+                            src={blog?.photo}
+                            className="transition-all rounded-lg h-full "
+                            width={1000}
+                            height={1000}
+                          />
+                        </>
+                      ) : (
+                        <span className="absolute w-16 h-16 text-gray-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                          <MdNoPhotography />
+                        </span>
+                      )}
                     </CardImage>
                     <p className="text-primary text-sm">View Details</p>
                   </div>
@@ -142,7 +142,7 @@ const BlogSection = ({ blogs }) => {
                     </div>
                   </CardContent>
                 </Card>
-              </Link>
+              </div>
             );
           })}
         </div>
