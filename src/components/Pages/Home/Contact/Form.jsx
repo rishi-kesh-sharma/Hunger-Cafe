@@ -61,7 +61,7 @@ const ContactForm = () => {
       .matches(validationRegex.phone, "Invalid phone number"),
     message: Yup.string()
       .required()
-      .min("message must be 10 character long")
+      .min(10, "message must be 10 character long")
       .max(300, "message cannot be greater than 300 characters"),
   });
   return (
