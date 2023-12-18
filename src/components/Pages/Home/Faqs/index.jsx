@@ -16,7 +16,7 @@ const FAQCards = ({ faqs }) => {
         <div className="col-span-2 md:col-span-1">
           <SectionTitle>FAQs</SectionTitle>
           <Accordion
-            className=" border border-gray-400 rounded-lg"
+            className="rounded-lg "
             transition={{
               duration: "300ms",
               timingFunction: "cubic-bezier(0, 0, 0.2, 1)",
@@ -27,13 +27,15 @@ const FAQCards = ({ faqs }) => {
                   <>
                     <AccordionHeader
                       key={index}
-                      className="w-full flex justify-between items-start text-primary border-b px-2 py-3  text-start ">
-                      <span className="text-orange-800 font-[400]  text-sm">
+                      className="w-full flex justify-between items-start bg-primary text-primary  px-2 py-3  text-start mb-[1px] rounded-lg ">
+                      <span className=" text-secondary font-[400]  text-sm">
                         {item?.question}
                       </span>
                       <div>
                         <svg
-                          class={`w-6 h-6 md:w-6 ${!open ? "" : "rotate-90"}`}
+                          class={`w-6 h-6 md:w-6 text-secondary ${
+                            !open ? "" : "rotate-90"
+                          }`}
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg">

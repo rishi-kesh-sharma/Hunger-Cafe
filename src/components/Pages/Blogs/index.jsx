@@ -12,7 +12,7 @@ import Loading from "../../commons/Loading";
 import NoData from "../../commons/NoData";
 import Banner from "../../commons/Banner";
 const Blogs = () => {
-  const limit = 1;
+  const limit = 10;
   const [currentPageUrl, setCurrentPageUrl] = useState(null);
 
   useEffect(() => {

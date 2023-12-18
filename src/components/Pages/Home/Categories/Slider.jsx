@@ -10,8 +10,7 @@ const Slider = ({ categories }) => {
     nextArrow: false,
     prevArrow: false,
     className: "center",
-    speed: 2000,
-    autoplaySpeed: 2000,
+
     cssEase: "linear",
     autoplay: true,
     responsive: [
@@ -20,7 +19,6 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 10,
           slidesToScroll: 6,
-          // infinite: true,
           dots: true,
           centerMode: false,
         },
@@ -49,10 +47,12 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
-          // infinite: true,
+          infinite: categories?.length > 3,
+          speed: 2000,
+          autoplaySpeed: 2000,
+          loop: true,
           dots: false,
-
-          // autoPlay: true,
+          autoPlay: true,
         },
       },
       {
@@ -60,10 +60,12 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          // infinite: true,
           dots: false,
 
-          // autoPlay: true,
+          infinite: categories?.length > 3,
+          speed: 2000,
+          autoplaySpeed: 2000,
+          autoPlay: true,
         },
       },
       {
@@ -71,9 +73,11 @@ const Slider = ({ categories }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          // infinite: true,
+          infinite: categories?.length > 3,
+          speed: 2000,
+          autoplaySpeed: 2000,
           dots: false,
-          // autoPlay: true,
+          autoPlay: true,
         },
       },
     ],

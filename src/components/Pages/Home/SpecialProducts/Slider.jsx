@@ -14,10 +14,10 @@ const SpecialProductSlider = ({ products }) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     className: "center",
-    speed: 4000,
-    autoplaySpeed: 4000,
+
     cssEase: "linear",
     autoplay: false,
+
     responsive: [
       {
         breakpoint: 1440,
@@ -44,25 +44,25 @@ const SpecialProductSlider = ({ products }) => {
           slidesToShow: 3,
           slidesToScroll: 1,
           speed: 400,
-          // infinite: true,
         },
       },
       {
         breakpoint: 480,
         settings: {
+          speed: 4000,
+          autoplaySpeed: 4000,
           slidesToShow: 1,
           slidesToScroll: 1,
-          // infinite: true,
+          infinite: products?.length > 3,
           dots: false,
           autoplay: true,
           prevArrow: false,
           nextArrow: false,
-          autoplaySpeed: 4000,
-          speed: 4000,
         },
       },
     ],
   };
+
   return (
     <Section className="mt-0">
       <CustomSlider settings={settings}>

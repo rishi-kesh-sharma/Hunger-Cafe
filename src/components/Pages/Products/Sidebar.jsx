@@ -40,13 +40,13 @@ export function SideBar({
                   setCurrentSubCategory(category?.id);
                 }}
                 key={index}
-                className={`w-auto border md:border-none md:w-full p-2 m-0 active:bg-none focus:bg-none flex rounded-lg cursor-pointer ${
+                className={`w-auto border md:border-none md:w-full p-2 m-0 active:bg-none focus:bg-none flex rounded-lg cursor-pointer gap-1 items-center ${
                   currentSubCategory != category?.id && "hover:bg-secondary/50"
                 } ${
                   currentSubCategory == category?.id &&
                   "bg-primary text-secondary "
                 }`}>
-                <ListItemPrefix className="">
+                <ListItemPrefix className="mr-0">
                   <CustomImage
                     defaultImage={DefaultCategoryImage}
                     alt="image"
@@ -112,8 +112,8 @@ export function DrawerWithNavigation({
                     closeDrawer();
                   }}
                   key={index}
-                  className="w-full p-2 m-0">
-                  <ListItemPrefix>
+                  className="w-full p-2 m-0 mr-0">
+                  <ListItemPrefix className="!mr-0">
                     {/* <PresentationChartBarIcon className="h-5 w-5" /> */}
                     <CustomImage
                       defaultImage={DefaultCategoryImage}

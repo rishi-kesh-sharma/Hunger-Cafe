@@ -36,7 +36,7 @@ const BlogDetail = () => {
       <main>
         <Container className=" flex gap-3 lg:pt-16 lg:pb-[2rem] relative flex-col lg:flex-row ">
           <div className="lg:w-[70%] bg-white mobile:w-[100%]">
-            <article className="p-5 w-full format format-sm sm:format-base lg:format-lg format-blue">
+            <article className=" w-full format format-sm sm:format-base lg:format-lg format-blue">
               <p className="inline-flex items-center mr-3 text-sm text-gray-900">
                 <time
                   className="text-gray-600 text-xs"
@@ -72,7 +72,7 @@ const BlogDetail = () => {
           </div>
           <div
             aria-label="Related articles"
-            className="px-5 py-5  bg-white sticky top-0 right-0 h-full">
+            className="lg:px-5 py-5  bg-white sticky top-0 right-0 h-full">
             <BlogSection blogs={blogs} />
           </div>
         </Container>

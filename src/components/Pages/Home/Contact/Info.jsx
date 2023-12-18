@@ -43,7 +43,7 @@ const Info = () => {
               <FaAddressBook className=" text-white text-[2rem]" />
             </div>
             <p className="text-xl font-semibold">Address</p>
-            <p>+61 4100 111 66</p>
+            <p>Sydney,Australia</p>
           </div>
         </div>
       </div>
