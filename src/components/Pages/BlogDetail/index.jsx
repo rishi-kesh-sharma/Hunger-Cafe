@@ -27,7 +27,7 @@ const BlogDetail = () => {
     loading: loading2,
     error: error2,
   } = useFetch({ path: API_PATHS.GET_RELATED_BLOGS(blog?.category) });
-  const text = blog?.description && cheerio?.load(blog?.description).text();
+  const description = { __html: blog?.description };
   const loading = loading1 || loading2;
   if (loading2) {
     return <Loading />;
@@ -57,8 +57,10 @@ const BlogDetail = () => {
                 </h1>
                 <CustomImage src={blog?.photo} className="rounded-lg" />
 
-                <section className="text-gray-500 text-sm my-6">
-                  <p>{text}</p>
+                <section className="text-gray-500  my-6">
+                  <p>
+                    <div dangerouslySetInnerHTML={description} />
+                  </p>
                 </section>
 
                 <section className="flex flex-col gap-3">

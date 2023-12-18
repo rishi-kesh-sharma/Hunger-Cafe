@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogHeader, DialogBody } from "@material-tailwind/react";
 import Carousel, { ProductImagesCarousel } from "./Carousel";
+import cheerio from "cheerio";
 import {
   addToCart,
   selectItemsInCart,
@@ -11,30 +12,21 @@ import CustomImage from "../../../commons/CustomImage";
 
 export default function ProductDetailModal({ open, handleOpen, product }) {
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(null);
   const [isAlreadyInCart, setIsAlreadyInCart] = useState(false);
   const cartItems = useSelector(selectItemsInCart);
-  console.log(cartItems, "cartItems");
-
   useEffect(() => {
     const isInCart = cartItems?.some((cartItem) => {
       return cartItem?.item?.id === product.id;
     });
     setIsAlreadyInCart(isInCart);
   }, [cartItems]);
-  const increaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
-  };
-  const decreaseQuantity = () => {
-    if (quantity >= 1) {
-      setQuantity((prev) => prev - 1);
-    }
-  };
   const handleAdd = (itemToAdd) => dispatch(addToCart(itemToAdd));
 
-  const images = [...Array(4)]?.map((item) => product?.photo);
-  console.log(product, "the product");
-
+  const description = {
+    __html: product?.description,
+    // __html: `<h1>hello from desc</h1>`,
+  };
+  console.log(product?.description, "desc");
   return (
     <>
       <Dialog size="xs" open={open} handler={handleOpen}>
@@ -46,40 +38,8 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
             className="w-full h-[150px] md:h-full object-contain rounded-lg"
           />
           <div className="flex flex-col gap-[1rem]">
-            <p className="text-sm">
-              {product?.description?.length > 200
-                ? product?.description.slice(0, 200) + "..."
-                : product?.description}
-            </p>
-            {/* <p className="my-2 space-x-1">
-              <span className="font-semibold">
-                ₹
-                {parseFloat(
-                  (quantity * parseFloat(product?.itemPrice)).toFixed(2)
-                )}
-              </span>
-              <span className="text-gray-800 font-normal">
-                ({product?.itemPrice} × {quantity})
-              </span>
-            </p> */}
-            {/* <div className="flex items-center">
-              <button
-                onClick={() => decreaseQuantity(product?.id)}
-                disabled={quantity <= 1}
-                className={
-                  "bg-primary disabled:bg-primary/50 disabled:cursor-not-allowed text-white font-bold w-8 h-8 rounded-md"
-                }>
-                -
-              </button>
-              <p className="font-bold w-8 h-8 flex justify-center items-center">
-                {quantity}
-              </p>
-              <button
-                onClick={() => increaseQuantity(product?.id)}
-                className="bg-primary text-white font-bold w-8 h-8 rounded-md">
-                +
-              </button>
-            </div> */}
+            <div dangerouslySetInnerHTML={description} />
+            {/* </p> */}
             <p className="text-primary">Rs {product?.price}</p>
             {isAlreadyInCart ? (
               <Link

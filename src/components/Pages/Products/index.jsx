@@ -48,13 +48,10 @@ const Products = () => {
           currentSubCategory={currentSubCategory}
           setCurrentSubCategory={setCurrentSubCategory}
         />
-        {/* <DrawerWithNavigation
-          subCategories={subCategories}
-          currentSubCategory={currentSubCategory}
-          setCurrentSubCategory={setCurrentSubCategory}
-        /> */}
         {loading2 ? (
-          <Spinner />
+          <div className="col-span-1 md:col-span-2 lg:col-span-3   w-full flex items-center justify-center">
+            <Spinner />
+          </div>
         ) : isRenderable(products) ? (
           <List products={products} loading={loading2} />
         ) : (

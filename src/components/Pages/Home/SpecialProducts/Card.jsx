@@ -12,8 +12,7 @@ export default function ProductCard({ product }) {
     <>
       <div
         className="bg-white gap-0 items-start hover:scale-105  w-full 
- max-h-[300px]
-        
+ max-h-[300px]   
 p-2
  rounded-lg
  border

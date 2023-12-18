@@ -5,6 +5,7 @@ import { addToCart, selectItemsInCart } from "../../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CustomImage from "../../commons/CustomImage";
+import cheerio from "cheerio";
 
 export default function ProductDetailModal({ open, handleOpen, product }) {
   const dispatch = useDispatch();
@@ -19,17 +20,14 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
     });
     setIsAlreadyInCart(isInCart);
   }, [cartItems]);
-  const increaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
-  };
-  const decreaseQuantity = () => {
-    if (quantity >= 1) {
-      setQuantity((prev) => prev - 1);
-    }
-  };
-  const handleAdd = (itemToAdd) => dispatch(addToCart(itemToAdd));
 
-  // const images = [...Array(1)]?.map((item) => product?.photo);
+  const handleAdd = (itemToAdd) => dispatch(addToCart(itemToAdd));
+  const description = {
+    __html:
+      product?.description?.length > 200
+        ? product?.description.slice(0, 200) + "..."
+        : product?.description,
+  };
 
   return (
     <>
@@ -42,40 +40,10 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
             className="w-full h-[130px] md:h-full object-contain rounded-lg"
           />
           <div className="flex flex-col gap-[1rem]">
-            <p className="text-sm">
-              {product?.description?.length > 200
-                ? product?.description.slice(0, 200) + "..."
-                : product?.description}
+            <p className="">
+              <div dangerouslySetInnerHTML={description} />
             </p>
-            {/* <p className="my-2 space-x-1">
-              <span className="font-semibold">
-                ₹
-                {parseFloat(
-                  (quantity * parseFloat(product?.itemPrice)).toFixed(2)
-                )}
-              </span>
-              <span className="text-gray-800 font-normal">
-                ({product?.itemPrice} × {quantity})
-              </span>
-            </p> */}
-            {/* <div className="flex items-center">
-              <button
-                onClick={() => decreaseQuantity(product?.id)}
-                disabled={quantity <= 1}
-                className={
-                  "bg-primary disabled:bg-primary/50 disabled:cursor-not-allowed text-white font-bold w-8 h-8 rounded-md"
-                }>
-                -
-              </button>
-              <p className="font-bold w-8 h-8 flex justify-center items-center">
-                {quantity}
-              </p>
-              <button
-                onClick={() => increaseQuantity(product?.id)}
-                className="bg-primary text-white font-bold w-8 h-8 rounded-md">
-                +
-              </button>
-            </div> */}
+
             <p className="text-primary">Rs {product?.price}</p>
             {isAlreadyInCart ? (
               <Link

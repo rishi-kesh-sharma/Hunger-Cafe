@@ -9,7 +9,6 @@ export default function Card({ product }) {
   const handleOpen = () => setOpen((cur) => !cur);
 
   return (
-    // <a href={`/product/${product?.id}`}>
     <>
       <div
         className="bg-white gap-0 items-start hover:scale-105  w-full 
