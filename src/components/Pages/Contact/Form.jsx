@@ -82,6 +82,7 @@ const ContactForm = () => {
       .max(100, "Subject cannot be more than 100 characters "),
     phone: Yup.string()
       .required()
+      .max(10, "Phone number cannot be more than 10 digits")
       .matches(validationRegex.phone, "Invalid phone number"),
     message: Yup.string()
       .required()

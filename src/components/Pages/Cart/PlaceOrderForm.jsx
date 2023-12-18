@@ -15,6 +15,8 @@ import * as Yup from "yup";
 import messageToast from "../../../utils/messageToast";
 import axios from "axios";
 import { API_PATHS, validationRegex } from "../../../utils/constants";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../../features/cart/cartSlice";
 
 const CustomInput = ({ field, form, ...props }) => {
   return <Input {...field} {...props} />;
@@ -26,6 +28,7 @@ export default function PlaceOrder({
   itemsId,
   itemsQuantity,
 }) {
+  const dispatch = useDispatch();
   const handleSubmit = async (values) => {
     let data = JSON.stringify({
       type: "Delivery",
@@ -48,6 +51,7 @@ export default function PlaceOrder({
       .then((response) => {
         console.log(JSON.stringify(response.data));
         handleOpen();
+        dispatch(clearCart());
         messageToast("success", "Your order is placed!!!");
       })
       .catch((err) => {
@@ -77,6 +81,7 @@ export default function PlaceOrder({
       .matches(validationRegex.email, "Invalid email"),
     phone: Yup.string()
       .required()
+      .max(10, "Phone number cannot be more than 10 digits")
       .matches(validationRegex.phone, "Invalid phone number"),
     address: Yup.string()
       .required()

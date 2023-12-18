@@ -107,13 +107,22 @@ const Hero = ({ teams }) => {
                         </p>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <a className="text-blue-500" href={team?.facebook}>
+                        <a
+                          target="_blank"
+                          className="text-blue-500"
+                          href={team?.facebook}>
                           <FaFacebook />
                         </a>
-                        <a className="text-blue-500" href={team?.facebook}>
+                        <a
+                          target="_blank"
+                          className="text-blue-500"
+                          href={team?.facebook}>
                           <FaInstagram />
                         </a>
-                        <a className="text-blue-500" href={team?.facebook}>
+                        <a
+                          target="_blank"
+                          className="text-blue-500"
+                          href={team?.facebook}>
                           <FaLinkedin />
                         </a>
                       </div>

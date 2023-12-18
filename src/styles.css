@@ -123,7 +123,8 @@ body {
     justify-content: center;
     justify-items: center;
     grid-template-columns: repeat(3, 1fr);
-
+    max-width: 90%;
+    margin: auto;
     /* grid-template-columns: repeat(2, 1fr); */
   }
 }

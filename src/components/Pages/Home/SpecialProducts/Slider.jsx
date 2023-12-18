@@ -20,9 +20,19 @@ const SpecialProductSlider = ({ products }) => {
 
     responsive: [
       {
+        breakpoint: 1800,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          // infinite: true,
+          dots: true,
+          speed: 400,
+        },
+      },
+      {
         breakpoint: 1440,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 1,
           // infinite: true,
           dots: true,

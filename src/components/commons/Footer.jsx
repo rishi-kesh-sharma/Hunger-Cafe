@@ -8,7 +8,7 @@ import { footer } from "../../data";
 
 const Footer = () => {
   return (
-    <Section className="bg-[#1d2636] mt-0  pt-[4rem] overflow-x-hidden">
+    <Section className="bg-[#1d2636] mt-0  pt-[4rem] overflow-x-hidden ">
       <Container>
         <footer className={` footer `}>
           <div className={`container gap-0`}>
@@ -22,7 +22,7 @@ const Footer = () => {
               </div>
             </div>
             {footer?.map((val, index) => (
-              <div key={index} className={` box`}>
+              <div key={index} className={` box md:w-full`}>
                 <h3 className="text-gray-300  ">{val.title}</h3>
                 <ul>
                   {val.text?.map((item, index) => {
@@ -38,7 +38,7 @@ const Footer = () => {
                       );
                     } else {
                       return (
-                        <li className="text-xs" key={index}>
+                        <li className="text-xs w-full" key={index}>
                           {item.list}
                         </li>
                       );

@@ -42,7 +42,7 @@ const Products = () => {
 
   return (
     <Section className="py-[2rem] my-0">
-      <Container className="md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-[2rem]">
+      <Container className="md:grid md:grid-cols-3 lg:grid-cols-4   md:gap-[2rem]">
         <SideBar
           subCategories={subCategories}
           currentSubCategory={currentSubCategory}
@@ -58,7 +58,7 @@ const Products = () => {
         ) : isRenderable(products) ? (
           <List products={products} loading={loading2} />
         ) : (
-          <div className=" col-span-3 w-full flex items-center justify-center">
+          <div className=" col-span-1 md:col-span-2 lg:col-span-3   w-full flex items-center justify-center">
             <NoData />
           </div>
         )}{" "}
