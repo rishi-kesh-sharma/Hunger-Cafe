@@ -49,13 +49,11 @@ export default function PlaceOrder({
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
         handleOpen();
         dispatch(clearCart());
         messageToast("success", "Your order is placed!!!");
       })
       .catch((err) => {
-        console.log(err);
         messageToast(
           "error",
           `${

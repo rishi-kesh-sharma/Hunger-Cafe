@@ -1,9 +1,9 @@
 import React from "react";
-import LoadingImage from "../../images/loading.gif";
+import LoadingImage from "../../images/loader2.gif";
 const Loading = () => {
   return (
-    <div className="h-screen w-screen">
-      <img src={LoadingImage} className="h-full w-full" />
+    <div className="h-screen w-screen bg-black/90">
+      <img src={LoadingImage} className="h-full w-full object-contain " />
     </div>
   );
 };

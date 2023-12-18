@@ -13,7 +13,6 @@ test('Logo should be loaded on rendering header', () => {
     </Provider>
   );
 
-  //   console.log(header);
 
   const logo = header.getByTestId('logo');
 

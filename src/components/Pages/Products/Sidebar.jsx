@@ -21,7 +21,6 @@ export function SideBar({
   currentSubCategory,
   setCurrentSubCategory,
 }) {
-  console.log(currentSubCategory, "current sub category");
   return (
     <Card className=" md:grid-cols-1  overflow-x-hidden  w-full  p-2  shadow-none md:shadow-xl md:shadow-blue-gray-900/5 md:border h-auto ">
       <div className="mb-2 p-0 w-full ">

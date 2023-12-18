@@ -12,7 +12,6 @@ import useFetch from "../../../hooks/useFetch";
 import Loading from "../../commons/Loading";
 
 const Home = () => {
-  console.log(process.env.STATIC_URL, "static url");
 
   const {
     data: banners,

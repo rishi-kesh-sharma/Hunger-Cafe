@@ -45,11 +45,9 @@ const ContactForm = () => {
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
         messageToast("success", "We will respond you soon!!!");
       })
       .catch((err) => {
-        console.log(err);
         messageToast(
           "error",
           `${

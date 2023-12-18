@@ -12,7 +12,6 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
   const [quantity, setQuantity] = useState(null);
   const [isAlreadyInCart, setIsAlreadyInCart] = useState(false);
   const cartItems = useSelector(selectItemsInCart);
-  console.log(cartItems, "cartItems");
 
   useEffect(() => {
     const isInCart = cartItems?.some((cartItem) => {

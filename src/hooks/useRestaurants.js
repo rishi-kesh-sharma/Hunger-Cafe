@@ -46,7 +46,6 @@ const useRestaurants = (url) => {
         );
       }
     } catch (err) {
-      console.log(err.response);
       setError(err.response);
     } finally {
       setIsLoading(false);

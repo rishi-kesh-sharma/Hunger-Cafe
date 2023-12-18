@@ -1,11 +1,9 @@
 export async function getLocation() {
   try {
-    if ('geolocation' in navigator) {
+    if ("geolocation" in navigator) {
       const position = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
-
-      // console.log(position);
 
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
@@ -16,16 +14,11 @@ export async function getLocation() {
 
       const city = await res.json();
 
-      //   console.log(city.name);
-
-      //   console.log('Latitude: ' + latitude);
-      //   console.log('Longitude: ' + longitude);
-
       return { longitude, latitude, city: city.name };
     } else {
-      throw new Error('Geolocation is not supported in your browser');
+      throw new Error("Geolocation is not supported in your browser");
     }
   } catch (error) {
-    console.error('Error getting location: ' + error.message);
+    console.error("Error getting location: " + error.message);
   }
 }

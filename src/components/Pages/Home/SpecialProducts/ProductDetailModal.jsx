@@ -26,7 +26,6 @@ export default function ProductDetailModal({ open, handleOpen, product }) {
     __html: product?.description,
     // __html: `<h1>hello from desc</h1>`,
   };
-  console.log(product?.description, "desc");
   return (
     <>
       <Dialog size="xs" open={open} handler={handleOpen}>

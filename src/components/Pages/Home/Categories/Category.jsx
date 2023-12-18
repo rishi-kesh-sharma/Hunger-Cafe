@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import defaultImage from "../../../../images/category/category.png";
 import CustomImage from "../../../commons/CustomImage";
 const Category = ({ category }) => {
-  console.log(category, "category");
   return (
     <Link
       to={`products/category/${category?.id}`}

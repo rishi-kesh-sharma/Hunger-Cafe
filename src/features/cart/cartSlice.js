@@ -12,7 +12,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      console.log(action, "action");
       state.items.push({
         item: action.payload,
         quantity: 1,
@@ -30,7 +29,6 @@ const cartSlice = createSlice({
 
     increaseItemQuantity: (state, action) => {
       const { id } = action.payload;
-      console.log(id, "id");
 
       const itemToIncrease = state.items.find(
         (cartItem) => cartItem?.item?.id === id

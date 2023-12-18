@@ -28,7 +28,6 @@ const BlogDetail = () => {
     error: error2,
   } = useFetch({ path: API_PATHS.GET_RELATED_BLOGS(blog?.category) });
   const description = { __html: blog?.description };
-  const loading = loading1 || loading2;
   if (loading2) {
     return <Loading />;
   }
@@ -96,22 +95,21 @@ const BlogSection = ({ blogs }) => {
 
   return (
     <>
-      <div className="">
+      <div className="lg:max-w-[250px] mt-2 ">
         <h2 className="mb-8 text-2xl font-bold text-gray-900">
           Related articles
         </h2>
         <div className=" grid grid-cols-1 md:grid-cols-3  lg:flex lg:flex-col gap-5  ">
           {blogs?.data?.slice(0, 3)?.map((blog, index) => {
-            console.log(blog?.slug, "slug");
             return (
               <div
                 onClick={() => {
                   navigate(`/blog/${blog?.slug}`);
                 }}
                 key={blog?.slug}>
-                <Card className="cursor-pointer bg-white shadow-lg rounded-lg  p-5  w-full min-h-[210px] gap-[1rem]">
+                <Card className="cursor-pointer bg-white shadow-lg rounded-lg  p-5  w-full min-h-[210px] md:min-h-[300px] lg:min-h-[200px] gap-[1rem]">
                   <div className="w-full  flex items-center justify-between ">
-                    <CardImage className=" rounded-lg w-[100px] md:w-[70px] lg:w-[100px]  h-[60px] lg:h-[80px] ">
+                    <CardImage className=" rounded-lg w-full  lg:w-[100px]  h-[130px] lg:h-[80px] ">
                       {blog?.photo ? (
                         <>
                           <CustomImage
@@ -128,7 +126,9 @@ const BlogSection = ({ blogs }) => {
                         </span>
                       )}
                     </CardImage>
-                    <p className="text-primary text-sm">View Details</p>
+                    <p className=" hidden lg:block text-primary text-sm">
+                      View Details
+                    </p>
                   </div>
                   <CardContent className="gap-[0.5rem]">
                     <h2 className="text-[1rem]">
