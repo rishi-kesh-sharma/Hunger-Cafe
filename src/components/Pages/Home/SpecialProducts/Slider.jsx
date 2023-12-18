@@ -22,7 +22,7 @@ const SpecialProductSlider = ({ products }) => {
       {
         breakpoint: 1800,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 4,
           slidesToScroll: 1,
           // infinite: true,
           dots: true,
@@ -31,6 +31,16 @@ const SpecialProductSlider = ({ products }) => {
       },
       {
         breakpoint: 1440,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          // infinite: true,
+          dots: true,
+          speed: 400,
+        },
+      },
+      {
+        breakpoint: 1300,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
