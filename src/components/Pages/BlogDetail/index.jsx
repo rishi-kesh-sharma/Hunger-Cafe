@@ -13,6 +13,7 @@ import CardImage from "../../commons/CardImage.jsx";
 import CardContent from "../../commons/CardContent.jsx";
 import cheerio from "cheerio";
 import Loading from "../../commons/Loading.jsx";
+import Spinner from "../../commons/Spinner.jsx";
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -28,48 +29,54 @@ const BlogDetail = () => {
   } = useFetch({ path: API_PATHS.GET_RELATED_BLOGS(blog?.category) });
   const text = blog?.description && cheerio?.load(blog?.description).text();
   const loading = loading1 || loading2;
-  if (loading) {
+  if (loading2) {
     return <Loading />;
   }
   return (
     <div className="">
       <main>
         <Container className=" flex gap-3 lg:pt-16 lg:pb-[2rem] relative flex-col lg:flex-row ">
-          <div className="lg:w-[70%] bg-white mobile:w-[100%]">
-            <article className=" w-full format format-sm sm:format-base lg:format-lg format-blue">
-              <p className="inline-flex items-center mr-3 text-sm text-gray-900">
-                <time
-                  className="text-gray-600 text-xs"
-                  pubdate
-                  datetime="2022-02-08"
-                  title="February 8th, 2022">
-                  {moment(blog?.created_at || blog?.updated_at).fromNow()}
-                </time>
-              </p>
-              <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">
-                {blog?.name}
-              </h1>
-              <CustomImage src={blog?.photo} className="rounded-lg" />
+          {loading1 ? (
+            <div className="lg:w-[70%] bg-white mobile:w-[100%] flex items-center">
+              <Spinner />
+            </div>
+          ) : (
+            <div className="lg:w-[70%] bg-white mobile:w-[100%]">
+              <article className=" w-full format format-sm sm:format-base lg:format-lg format-blue">
+                <p className="inline-flex items-center mr-3 text-sm text-gray-900">
+                  <time
+                    className="text-gray-600 text-xs"
+                    pubdate
+                    datetime="2022-02-08"
+                    title="February 8th, 2022">
+                    {moment(blog?.created_at || blog?.updated_at).fromNow()}
+                  </time>
+                </p>
+                <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl">
+                  {blog?.name}
+                </h1>
+                <CustomImage src={blog?.photo} className="rounded-lg" />
 
-              <section className="text-gray-500 text-sm my-6">
-                <p>{text}</p>
-              </section>
+                <section className="text-gray-500 text-sm my-6">
+                  <p>{text}</p>
+                </section>
 
-              <section className="flex flex-col gap-3">
-                <div className="flex gap-3 ">
-                  {blog?.tags?.map((item) => {
-                    return (
-                      <p
-                        key={item}
-                        className="p-2 bg-primary/40 rounded-md text-gray-800">
-                        {item}
-                      </p>
-                    );
-                  })}
-                </div>
-              </section>
-            </article>
-          </div>
+                <section className="flex flex-col gap-3">
+                  <div className="flex gap-3 ">
+                    {blog?.tags?.map((item) => {
+                      return (
+                        <p
+                          key={item}
+                          className="p-2 bg-primary/40 rounded-md text-gray-800">
+                          {item}
+                        </p>
+                      );
+                    })}
+                  </div>
+                </section>
+              </article>
+            </div>
+          )}
           <div
             aria-label="Related articles"
             className="lg:px-5 py-5  bg-white sticky top-0 right-0 h-full">

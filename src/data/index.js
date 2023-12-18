@@ -277,8 +277,9 @@ export const footer = [
     text: [
       { list: "Home ", link: "/" },
       { list: "About ", link: "/about" },
-      { list: "Products ", link: "/products/category/1" },
+      { list: "Contact ", link: "/contact" },
       { list: "Blogs", link: "/blogs" },
+      { list: "Cart", link: "/cart" },
       // { list: "Terms and Conditions", link: "/terms" },
     ],
   },
