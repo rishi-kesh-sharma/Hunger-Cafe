@@ -57,7 +57,7 @@ const BlogDetail = () => {
                 </h1>
                 <CustomImage src={blog?.photo} className="rounded-lg" />
 
-                <section className="text-gray-500  my-6">
+                <section className="  my-6">
                   <p>
                     <div dangerouslySetInnerHTML={description} />
                   </p>
